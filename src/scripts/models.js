@@ -1,15 +1,6 @@
 import Backbone from 'backbone'
 
-
-export const TodoModel = Backbone.Model.extend({
-	defaults: {
-		status: 'incomplete'
-	},
-	idAttribute: '_id',
-	urlRoot: '/api/tasks'
-})
-
-export const TodoCollection = Backbone.Collection.extend({
-	model: TodoModel,
-	url: '/api/tasks'
+export const LegislatorCollection = Backbone.Collection.extend({
+	url: 'https://congress.api.sunlightfoundation.com/legislators',
+	_key: '0e85724a8f924c6aba8bd576df364eb7'
 })

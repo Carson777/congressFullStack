@@ -1,37 +1,25 @@
 import Backbone from 'backbone'
 import _ from 'underscore'
-import {TodoCollection,TodoModel} from './models'
 
 const STORE = _.extend(Backbone.Events,{
+
 	_data: {
-		todoCollection: new TodoCollection(),
-		currentTasks: 'all' // all || complete || incomplete
+		year: 2016,
+		color: 'blue'
 	},
 
 	_emitChange: function() {
-		this.trigger('storeChanged')
+		this.trigger('ahhh!')
 	},
 
-	_get: function(prop) {
-		return this._data[prop]
-	},
-
-	_getData: function() {
-		return this._data
-	},
-
-	_initialize: function() {
-		this._get('todoCollection').on('all',()=>{
-			this._emitChange()
-		})
-	},
-
-	_set: function(newData) {
-		this._data = _.extend(this._data,newData)
+	_set: function(changeObj) {
+		// actually modify _data
+			// i need to take the union of my changeObj and my old _data.
+		this._data = _.extend(this._data, changeObj)
+		// emit change
 		this._emitChange()
 	}
-})
 
-STORE._initialize()
+})
 
 export default STORE

@@ -46,47 +46,10 @@ let Task = require('../db/schema.js').Task
       })  
     })
 
-    // Routes for a Model(resource) should have this structure
-    apiRouter
-      .get('/tasks', function(req,res){
-        Task.find(req.query, function(err,results) {
-          if (err) {
-            res.status(500).send(err)
-          }
-          else {
-            res.json(results)
-          }
-        })
-      })
-      .post('/tasks', function(req,res){
-        var task = new Task(req.body)
-        task.save(function(err) {
-          if (err) {
-            console.log(err)
-            res.status(500).send(err)
-          }
-          else {
-            res.json(task)
-          }
-        })
-      })
-      .put('/tasks/:_id', function(req, res){
-        Task.findByIdAndUpdate(req.params._id, req.body, function(err, record){
-              console.log(req.body)
-              console.log('\n')
-            if (err) {
-              console.log(req.body)
-              console.log('\n')
-              console.log(err)
-              res.status(500).send(err)
-            }
-            else if (!record) {
-              res.status(400).send('no record found with that id')
-            }
-            else {
-              res.json(req.body)
-            }
-        })
-      })
+
+
+
+
+
 
 module.exports = apiRouter
