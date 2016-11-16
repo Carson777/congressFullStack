@@ -16,7 +16,7 @@ const HomeView = React.createClass({
 		// when we hear the store announce that it has changed its data,
 		// we should update the component's state so that the app will re-render.
 		STORE.on('ahhh!', ()=> {
-			this.setState(STORE._data)
+			this.setState(STORE._getData())
 		})
 	},
 
@@ -25,7 +25,7 @@ const HomeView = React.createClass({
 	},
 
 	getInitialState: function() {
-		return STORE._data
+		return STORE._getData()
 	},
 
 	render: function() {

@@ -12,6 +12,14 @@ const STORE = _.extend(Backbone.Events,{
 		this.trigger('ahhh!')
 	},
 
+	_get: function(key) {
+		return this._data[key]
+	},
+
+	_getData: function() {
+		return this._data
+	},
+
 	_set: function(changeObj) {
 		// actually modify _data
 			// i need to take the union of my changeObj and my old _data.

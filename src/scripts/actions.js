@@ -3,13 +3,13 @@ import STORE from './store'
 const ACTIONS = {
 	changeColor: function() {
 		STORE._set({
-			color: STORE._data.color === 'blue' ? 'lime' : 'blue'
+			color: STORE._get('color') === 'blue' ? 'lime' : 'blue'
 		})
 	},
 
 	changeYear: function() {
 		STORE._set({
-			year: STORE._data.year + 1,
+			year: STORE._get('year') + 1,
 		})
 	}
 }
