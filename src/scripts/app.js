@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
 import HomeView from './views/homeView'
+import Models from './models.js'
+import STORE from './store.js'
 
 
 const app = function() {
@@ -17,7 +19,8 @@ const app = function() {
 		},
 
 		showHome: function() {
-			ReactDOM.render(<HomeView />, document.querySelector('.container'))
+			
+			ReactDOM.render(<HomeView />, document.querySelector(".container"))
 		},
 
 		redirect: function() {

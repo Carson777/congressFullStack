@@ -4,12 +4,23 @@ import _ from 'underscore'
 const STORE = _.extend(Backbone.Events,{
 
 	_data: {
-		year: 2016,
-		color: 'blue'
+		
+	},
+	getInitialState: function() {
+		var legislatorCollection = new MODELS.LegislatorCollection()
+			var promise = legislatorCollection.fetch({
+				data:{
+					'api-key': legislatorCollection._key
+				}
+			})
+			this._set(legislatorCollection)
+			console.log(legislatorCollection)
+			console.log(this._data)
+
 	},
 
 	_emitChange: function() {
-		this.trigger('ahhh!')
+		this.trigger('Update!')
 	},
 
 	_get: function(key) {

@@ -1,15 +1,18 @@
 import STORE from './store'
+import {LegislatorCollection} from "./models/models"
 
 const ACTIONS = {
-	changeColor: function() {
-		STORE._set({
-			color: STORE._get('color') === 'blue' ? 'lime' : 'blue'
-		})
-	},
-
-	changeYear: function() {
-		STORE._set({
-			year: STORE._get('year') + 1,
+	fetchData: function(){
+		console.log('yo')
+		var l = new LegislatorCollection()
+		l.fetch({
+			data: {
+				apikey: l._key
+			}
+		}).then(function(){
+			STORE._set({
+				_data: l
+			})
 		})
 	}
 }
