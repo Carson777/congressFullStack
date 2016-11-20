@@ -1,5 +1,5 @@
 import STORE from './store'
-import {LegislatorCollection} from "./models/models"
+import {LegislatorCollection} from "./models"
 
 const ACTIONS = {
 	fetchData: function(){

@@ -22,13 +22,41 @@ const HomeView = React.createClass({
 	},
 
 	render: function() {
-	 	
 	 	return (
 	 		<div className={'home-view'} >
-	 			<h3>{this.state.collection}</h3>
+	 			<List collection={this.state}/>
 	 		</div>
 	 	)
  	}
+})
+
+const List = React.createClass({
+	render: function() {
+		console.log(this.props.collection)
+		var col = this.props.collection
+		return (
+			<ul>
+				{col.map(legModel=> <Cutie model={legModel} />)}
+			</ul>
+		)
+	}
+})
+
+const Cutie = React.createClass({
+	render: function() {
+		var model = this.props.model
+		return (
+			<li>
+				<div className="profile">
+					<div className="bio">
+						<p>title: {model.get('title')} </p>
+						<p>state: {model.get('state_name')} </p>
+						<p>party: {model.get('party')} </p>
+					</div>
+				</div>
+			</li>
+		)
+	}
 })
 
 export default HomeView
