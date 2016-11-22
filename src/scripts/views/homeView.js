@@ -1,6 +1,7 @@
 import React from 'react'
 import STORE from '../store'
 import ACTIONS from '../actions'
+import Header from './Header'
 
 const HomeView = React.createClass({
 
@@ -24,7 +25,8 @@ const HomeView = React.createClass({
 	render: function() {
 	 	return (
 	 		<div className={'home-view'} >
-	 			<List collection={this.state}/>
+	 			<Header />
+	 			<List collection={this.state.legCollection}/>
 	 		</div>
 	 	)
  	}
@@ -43,12 +45,18 @@ const List = React.createClass({
 })
 
 const Cutie = React.createClass({
+	_addFave: function() {
+		ACTIONS.addFave(this.props.model)
+	},
 	render: function() {
 		var model = this.props.model
+		var fullName = model.get('first_name') + " " + model.get('last_name')
 		return (
 			<li>
 				<div className="profile">
 					<div className="bio">
+						<h3>{fullName}</h3>
+						<button onClick={this._addFave}>fave!</button>
 						<p>title: {model.get('title')} </p>
 						<p>state: {model.get('state_name')} </p>
 						<p>party: {model.get('party')} </p>

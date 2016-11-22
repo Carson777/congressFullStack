@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
 import HomeView from './views/homeView'
+import FavesView from './views/favesView'
 import Models from './models.js'
 import STORE from './store.js'
 
@@ -10,11 +11,11 @@ const app = function() {
 	const CongressRouter = Backbone.Router.extend({
 		routes: {
 			home: 'showHome',
-			favorites: 'showFavorites',
+			faves: 'showFaves',
 			"*default": 'redirect'
 		},
 
-		showFavorites: function() {
+		showFaves: function() {
 			ReactDOM.render(<FavesView />, document.querySelector('.container'))
 		},
 

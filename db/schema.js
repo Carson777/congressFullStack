@@ -15,8 +15,28 @@ const usersSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 
 })
-
+const faveSchema = new mongoose.Schema({
+	birthday: String,
+	chamber: String,
+	contact_form: String,
+	first_name: String,
+	last_name: String,
+	gender: String,
+	in_office: Boolean,
+	nickname: String,
+	oc_email: String,
+	party: String,
+	phone: String,
+	state: String,
+	state_name: String,
+	term_end: String,
+	term_start: String,
+	title: String,
+	website: String,
+	createdAt: {type: Date, default: Date.now}
+})
 
 module.exports = {
   User: mongoose.model('User', usersSchema),
+  Fave: mongoose.model('Fave', faveSchema)
 }

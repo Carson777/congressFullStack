@@ -1,26 +1,16 @@
 import Backbone from 'backbone'
 import _ from 'underscore'
+import {LegislatorCollection,FaveCollection} from "./models"
 
 const STORE = _.extend(Backbone.Events,{
 
 	_data: {
-		
+		legCollection: new LegislatorCollection(),
+		faveCollection: new FaveCollection()
 	},
-	// getInitialState: function() {
-	// 	var legislatorCollection = new MODELS.LegislatorCollection()
-	// 		var promise = legislatorCollection.fetch({
-	// 			data:{
-	// 				'api-key': legislatorCollection._key
-	// 			}
-	// 		})
-	// 		this._set(legislatorCollection)
-	// 		console.log(legislatorCollection)
-	// 		console.log(this._data)
-
-	// },
-
 	_emitChange: function() {
 		console.log('RELOADING')
+		console.log(this)
 		console.log(this._data)
 		this.trigger('Update!')
 	},
@@ -34,10 +24,8 @@ const STORE = _.extend(Backbone.Events,{
 	},
 
 	_set: function(changeObj) {
-		// actually modify _data
-			// i need to take the union of my changeObj and my old _data.
+		// modifying/ updating data in STORE
 		this._data = _.extend(this._data, changeObj)
-		// emit change
 		this._emitChange()
 	}
 
